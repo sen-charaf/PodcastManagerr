@@ -1,1 +1,19 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#welcomeBG{
+	-fx-background-color: linear-gradient(to top left,#28262C 0%,rgba(37, 7, 47, 0.90) 99.52%);
+
+}
+#wolcomeLabel{
+	-fx-text-fill: #FFF;
+	-fx-alignment: center;
+	-fx-font-family: Inter;
+	-fx-font-size: 8em;
+	-fx-font-style: normal;
+	-fx-font-weight: 400;
+	
+	
+}
+#welcomeCirclBTN:hover{
+	-fx-fill: #8A62C9E5;
+	
+}
