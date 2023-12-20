@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane fx:id="welcomeBG" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@application/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane fx:id="welcomeBG" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@application/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AcceuilController">
    <children>
       <Label fx:id="wolcomeLabel" layoutX="4.0" layoutY="106.0" prefHeight="141.0" prefWidth="1589.0" text="Bienvenue !" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Group layoutX="796.0" layoutY="447.0">
+      <Group layoutX="790.0" layoutY="439.0" onMouseClicked="#ClickStartBTN" onMouseEntered="#Enter_changetohoveredCircle" onMouseExited="#Leave_changetohoveredCircle" AnchorPane.bottomAnchor="361.0" AnchorPane.leftAnchor="690.0" AnchorPane.rightAnchor="710.0" AnchorPane.topAnchor="339.0">
          <children>
-            <Circle fx:id="welcomeCirclBTN" fill="#783ed4" radius="100.0" strokeType="INSIDE" />
-            <FontAwesomeIcon fill="WHITE" glyphName="ARROW_RIGHT" layoutX="-34.0" layoutY="34.0" size="8em" text="" />
+            <Circle fx:id="welcomeCirclBTN" fill="#783ed4" radius="100.0" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <FontAwesomeIcon fx:id="arrowID" fill="WHITE" glyphName="ARROW_RIGHT" layoutX="-40.0" layoutY="31.0" size="8em" text="">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </FontAwesomeIcon>
          </children>
       </Group>
       <Label fx:id="wolcomeLabel1" alignment="CENTER" layoutX="5.0" layoutY="531.0" prefHeight="141.0" prefWidth="185.0" text="cliquez pour commencer" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" />
