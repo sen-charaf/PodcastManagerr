@@ -9,12 +9,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="400.0" style="-fx-background-color: #28262C;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="400.0" style="-fx-background-color: #28262C;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="278.0" prefWidth="400.0" spacing="47.0">
          <children>
-            <Button fx:id="uploadBtn" maxHeight="77.0" maxWidth="256.0" minHeight="77.0" minWidth="256.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="256.0" style="-fx-background-radius: 54;" stylesheets="@application/menu.css" text="Upload" textFill="WHITE">
+            <Button fx:id="uploadBtn" maxHeight="77.0" maxWidth="256.0" minHeight="77.0" minWidth="256.0" mnemonicParsing="false" onMouseEntered="#mouseEnterUpload" onMouseExited="#mouseEnterUpload" prefHeight="77.0" prefWidth="256.0" style="-fx-background-radius: 54; -fx-background-color: #8550F7;" text="Upload" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="UPLOAD" />
                </graphic>
@@ -25,7 +24,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="createplaylistBtn" maxHeight="77.0" minHeight="77.0" minWidth="265.0" mnemonicParsing="false" prefWidth="126.0" style="-fx-background-radius: 54;" stylesheets="@application/menu.css" text="Create Playlist" textFill="WHITE">
+            <Button fx:id="createplaylistBtn" maxHeight="77.0" minHeight="77.0" minWidth="265.0" mnemonicParsing="false" onMouseEntered="#mouseEnterCreatePlaylist" onMouseExited="#mouseLeaveCreatePlaylist" prefWidth="126.0" style="-fx-background-radius: 54; -fx-background-color: #5C5C5C;" text="Create Playlist" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="PLUS_SQUARE_ALT" size="1.5em" />
                </graphic>
@@ -42,19 +41,19 @@
          </padding>
       </VBox>
       <Line endX="299.29290771484375" endY="7.748603820800781E-7" startX="-100.0" stroke="#3e3e3e" />
-      <VBox prefHeight="677.0" prefWidth="400.0" stylesheets="@application/menu.css">
+      <VBox prefHeight="677.0" prefWidth="400.0">
          <children>
-            <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" stylesheets="@application/menu.css" text="playList number 1" textFill="#ffffff99">
+            <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
                <padding>
                   <Insets left="16.0" right="16.0" />
                </padding>
             </Label>
-            <Label prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" stylesheets="@application/menu.css" text="Label" textFill="#ffffff99">
+            <Label prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 2" textFill="#ffffff99">
                <padding>
                   <Insets left="16.0" right="16.0" />
                </padding>
             </Label>
-            <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" stylesheets="@application/menu.css" text="Label" textFill="#ffffff99">
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 3" textFill="#ffffff99">
                <padding>
                   <Insets left="16.0" right="16.0" />
                </padding>
