@@ -45,15 +45,15 @@ public class AcceuilController {
     	welcomeCirclBTN.setStyle("-fx-fill: #783ed4;");
     }
     public void ClickStartBTN(MouseEvent  event) throws IOException {
-    	System.out.println("1");
+    	
     	Parent root = FXMLLoader.load(getClass().getResource("/HomePage.fxml"));
-    	System.out.println("1");
+    	
         Scene scene = new Scene(root);
-        System.out.println("1");
+       
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        System.out.println("1");
+        
         stage.setScene(scene);
-        System.out.println("1");
+       
         stage.show();
     }
     

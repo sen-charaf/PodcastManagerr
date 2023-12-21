@@ -1,0 +1,12 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+.playlistName{
+	-fx-padding: 0 16 0 16;
+	-fx-text-fill:#ffffff99;
+	-fx-font-family: Cabin Condensed;
+	-fx-font-size: 25px;
+	-fx-font-style: normal;
+	-fx-font-weight: 400;
+	
+}

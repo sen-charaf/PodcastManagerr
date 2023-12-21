@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="backGround" stylesheets="@application/homePage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomepageController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="400.0" style="-fx-background-color: #28262C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="400.0" style="-fx-background-color: #272728;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="278.0" prefWidth="400.0" spacing="40.0">
                <children>
@@ -47,9 +47,9 @@
                </padding>
             </VBox>
             <Line endX="299.29290771484375" endY="7.748603820800781E-7" startX="-100.0" stroke="#3e3e3e" />
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="616.0" prefWidth="400.0" style="-fx-border-style: none; -fx-background-color: #28262C;">
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="616.0" prefWidth="400.0" style="-fx-border-style: none; -fx-background-color: #272728;">
                <content>
-                  <VBox fx:id="playlistVcontainer" prefHeight="617.0" prefWidth="396.0" style="-fx-background-color: #28262C;">
+                  <VBox fx:id="playlistVcontainer" prefHeight="617.0" prefWidth="396.0" style="-fx-background-color: #272728;">
                      <children>
                         <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
                            <padding>
