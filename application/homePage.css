@@ -1,0 +1,28 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.backGround{
+	-fx-background-color: linear-gradient(to bottom right,rgba(26, 25, 30, 0.81) 1.57%, #000 99.22%);
+	
+}
+
+.playlistName{
+	-fx-padding: 0 16 0 16;
+	-fx-text-fill:#ffffff99;
+	-fx-font-family: Cabin Condensed;
+	-fx-font-size: 25px;
+	-fx-font-style: normal;
+	-fx-font-weight: 400;
+	
+}
+.RecentlyAdded{
+	
+	-fx-font-family: Inter;
+	-fx-font-size: 96px;
+	-fx-font-style: normal;
+	-fx-font-weight: 700;
+	
+	
+}
+#podcastContainer{
+	-fx-background-color: linear-gradient(to bottom right,rgba(26, 25, 30, 0.81) 1.57%, #000 99.22%);
+	-fx-background-insets: 0 0 0 -400 0;	
+}
