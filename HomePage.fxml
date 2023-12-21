@@ -1,77 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="backGround" stylesheets="@application/homePage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomepageController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="400.0" style="-fx-background-color: #272728;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="278.0" prefWidth="400.0" spacing="40.0">
-               <children>
-                  <Button fx:id="uploadBtn" maxHeight="77.0" maxWidth="256.0" minHeight="77.0" minWidth="256.0" mnemonicParsing="false" onMouseEntered="#mouseEnterUpload" onMouseExited="#mouseLeaveUpload" prefHeight="77.0" prefWidth="256.0" style="-fx-background-radius: 54; -fx-background-color: #8550F7;" text="Upload" textFill="WHITE">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="UPLOAD" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="32.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="createplaylistBtn" maxHeight="77.0" minHeight="77.0" minWidth="265.0" mnemonicParsing="false" onAction="#createLabel" onMouseEntered="#mouseEnterCreatePlaylist" onMouseExited="#mouseLeaveCreatePlaylist" prefWidth="126.0" style="-fx-background-radius: 54; -fx-background-color: #5C5C5C;" text="Create Playlist" textFill="WHITE">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS_SQUARE_ALT" size="1.5em" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets top="23.0" />
-               </padding>
-            </VBox>
-            <Line endX="299.29290771484375" endY="7.748603820800781E-7" startX="-100.0" stroke="#3e3e3e" />
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="616.0" prefWidth="400.0" style="-fx-border-style: none; -fx-background-color: #272728;">
-               <content>
-                  <VBox fx:id="playlistVcontainer" prefHeight="617.0" prefWidth="396.0" style="-fx-background-color: #272728;">
-                     <children>
-                        <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
-                           <padding>
-                              <Insets left="16.0" right="16.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="Label" textFill="#ffffff99">
-                           <padding>
-                              <Insets left="16.0" right="16.0" />
-                           </padding>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="Label" textFill="#ffffff99">
-                           <padding>
-                              <Insets left="16.0" right="16.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
+   <fx:include fx:id="menuVcontainer" source="Menu.fxml" />
       <Label layoutX="440.0" layoutY="6.0" prefHeight="141.0" prefWidth="1200.0" styleClass="RecentlyAdded" text="Recently added" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <TextField layoutX="465.0" layoutY="145.0" prefHeight="60.0" prefWidth="593.0" style="-fx-background-radius: 41;" />
       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="406.0" layoutY="277.0" prefHeight="622.0" prefWidth="1178.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="406.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="277.0">

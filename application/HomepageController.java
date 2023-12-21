@@ -21,69 +21,8 @@ public class HomepageController {
     @FXML
     private VBox playlistVcontainer;
 
-    @FXML
-    public void mouseEnterUpload(MouseEvent  event) {
-    	uploadBtn.setStyle("-fx-background-color:  #8550F7B8;-fx-background-radius: 54;");
-    }
-    public void mouseLeaveUpload(MouseEvent  event) {
-    	uploadBtn.setStyle("-fx-background-color: #8550F7;-fx-background-radius: 54;");
-    }
-    public void mouseEnterCreatePlaylist(MouseEvent  event) {
-    	createplaylistBtn.setStyle("-fx-background-color: #5C5C5CB8;-fx-background-radius: 54;");
-    }
-    public void mouseLeaveCreatePlaylist(MouseEvent  event) {
-    	createplaylistBtn.setStyle("-fx-background-color: #5C5C5C;-fx-background-radius: 54;");
-    }
-    
-    public void createLabel() {
-    	System.out.println("ccc");
-    	insertPlaylist();
-    	playlistVcontainer.getChildren().clear();
-    	getAllPlaylist();
-        System.out.println("gg");
-    }
     
 
-    @FXML
-    void initialize() {
-    	playlistVcontainer.getChildren().clear();
-    	getAllPlaylist();
-        
-    }
-    public void getAllPlaylist() {
-    	try {
-			Connection connection = MySqlConnector.getDBConnection();
-			
-			String sql="SELECT * FROM `playlist`"; 
-			PreparedStatement ps=connection.prepareStatement(sql);
-			
-			ResultSet results = ps.executeQuery();
-			while (results.next()) {
-				int play_id=results.getInt("playlist_id");
-				String play_name=results.getString("name");
-				String displayed_playName=play_name.concat(Integer.toString(play_id));
-				Label label = new Label(displayed_playName);
-		        label.getStyleClass().add("playlistName");
-		        playlistVcontainer.getChildren().add(label);
-				System.out.println(results.getString("name")+""+results.getInt("playlist_id"));
-				
-			}
-		} catch (Exception e) {
-			System.out.println("chi7aja mahiach alm3lm f l9raya");
-		}
-    	
-    }
-    public void insertPlaylist() {
-    	try {
-        	Connection connection = MySqlConnector.getDBConnection();
-        	String sql="INSERT INTO `playlist` (`name`) VALUES (?)"; 
-    		PreparedStatement pl=connection.prepareStatement(sql);
-    		pl.setString(1, "playlist from db number");
-    		
-    		pl.execute();
-        	}catch(Exception e) {
-        		System.out.println("chi7aja mahiach alm3lm f lktba");
-        	}
-    }
+  
 
 }
