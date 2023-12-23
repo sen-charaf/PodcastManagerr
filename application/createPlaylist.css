@@ -1,0 +1,42 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#PaneID {
+    -fx-background-color: linear-gradient(to bottom right, #454545 0%, #1F1E21 100%);
+}
+TextField{
+     -fx-background-color: #4B4B4B;
+    -fx-background-radius: 5px;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.38);
+    -fx-text-fill : #fff;
+    -fx-font-style: normal;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 0, 4, 4, 0); /* Box-shadow effect */
+}
+
+#CreateButtonID{
+	-fx-background-color:  #72CF86;
+    -fx-background-radius: 54px; /* Adjust the radius as per your preference */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 22px;
+    -fx-font-style: normal; /* Set the font style to normal */
+    -fx-font-weight: 700; /* Set the font weight to 700 (bold) */
+    -fx-cursor: hand; /* Set the cursor to appear as a pointer */
+    -fx-font-family: 'Inter';
+    }
+#CreateButtonID:hover{
+	-fx-background-color: #2AB247;
+}
+
+Rectangle{
+	-fx-fill : #757575;
+	-fx-stroke : transparent;
+	-fx-arc-width : 14;
+	-fx-arc-height : 14;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 17.9, 0, 0, 0); /* Box-shadow effect */
+	}
+	
+	
+ImageView:hover{
+	-fx-cursor: hand;
+}
