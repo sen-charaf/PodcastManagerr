@@ -10,3 +10,7 @@
 	-fx-font-weight: 400;
 	
 }
+.playlistName:hover{
+	-fx-background-color:rgba(75, 75, 75, 0.8);
+	-fx-cursor:hand ;
+}

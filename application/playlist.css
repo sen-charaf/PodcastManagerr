@@ -3,3 +3,44 @@
 	-fx-background-color: linear-gradient(to bottom, rgba(26, 25, 30, 0.86) 0.79%, #0D0D0D 38.8%);
 
 }
+#playlistbigName{	
+	-fx-font-family: Inter;
+	-fx-font-size: 6em;
+	-fx-font-style: normal;
+	-fx-font-weight: 700;
+	
+}
+#smalldec{
+-fx-font-family: Inter;
+-fx-font-size: 1.6em;
+-fx-font-style: normal;
+-fx-font-weight: 400;
+
+}
+#imageRec{
+	-fx-background-image:url("file:///F:/dowld/chris-lynch-Qruwi3Ur3Ak-unsplash.jpg") ;
+	-fx-background-radius:33px;
+}
+#backbtn:hover{
+	-fx-cursor:hand;
+}
+.columnName{
+	-fx-font-family: Inter;
+	-fx-font-size: 20px;
+	-fx-font-style: normal;
+	-fx-font-weight: 400;
+	-fx-text-fill:#ffffff73;
+	
+}
+#gridTable{
+	-fx-background-color: linear-gradient(to bottom, rgba(26, 25, 30, 0.86) 0.79%, #0D0D0D 38.8%);
+	-fx-background-insets: -450 0 0 0 0;
+}
+.rowtext{
+	-fx-text-fill:#ffffff;
+	-fx-font-family: Inter;
+	-fx-font-size: 1.5em;
+	-fx-font-style: normal;
+	-fx-font-weight: 400;
+
+}

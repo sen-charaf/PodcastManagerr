@@ -8,7 +8,7 @@
 	-fx-padding: 0 16 0 16;
 	-fx-text-fill:#ffffff99;
 	-fx-font-family: Cabin Condensed;
-	-fx-font-size: 25px;
+	-fx-font-size: 2.08em;
 	-fx-font-style: normal;
 	-fx-font-weight: 400;
 	
@@ -16,7 +16,7 @@
 .RecentlyAdded{
 	
 	-fx-font-family: Inter;
-	-fx-font-size: 96px;
+	-fx-font-size: 8em;
 	-fx-font-style: normal;
 	-fx-font-weight: 700;
 	

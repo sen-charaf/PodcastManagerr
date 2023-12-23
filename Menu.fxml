@@ -46,17 +46,17 @@
          <content>
             <VBox fx:id="vboxPlaylist" prefHeight="645.0" prefWidth="398.0" spacing="5.0" style="-fx-background-color: #272728;">
                <children>
-                  <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
+                  <Label layoutX="10.0" layoutY="27.0" prefHeight="36.0" prefWidth="399.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
                      <padding>
                         <Insets left="16.0" right="16.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 2" textFill="#ffffff99">
+                  <Label prefHeight="36.0" prefWidth="396.0" styleClass="playlistName" text="playList number 2" textFill="#ffffff99">
                      <padding>
                         <Insets left="16.0" right="16.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="387.0" styleClass="playlistName" text="playList number 3" textFill="#ffffff99">
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="396.0" styleClass="playlistName" text="playList number 3" textFill="#ffffff99">
                      <padding>
                         <Insets left="16.0" right="16.0" />
                      </padding>
