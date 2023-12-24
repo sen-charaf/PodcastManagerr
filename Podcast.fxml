@@ -3,10 +3,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="230.0" style="-fx-background-radius: 20;" stylesheets="@application/podcast.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.podcastCartController">
    <children>
-      <Label fx:id="podcastName" layoutX="59.0" layoutY="206.0" text="Podcast’s Name" textFill="WHITE" />
+      <Label fx:id="podcastName" alignment="CENTER" contentDisplay="CENTER" layoutY="209.0" prefHeight="25.0" prefWidth="230.0" stylesheets="@application/podcast.css" text="Podcast’s Name">
+         <font>
+            <Font name="Century" size="12.0" />
+         </font></Label>
       <Rectangle fx:id="imagePodcRec" arcHeight="20.0" arcWidth="20.0" fill="DODGERBLUE" height="180.0" layoutX="25.0" layoutY="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="180.0" />
       
    </children>

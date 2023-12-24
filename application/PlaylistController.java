@@ -78,7 +78,7 @@ public class PlaylistController{
 		}
 	public void backToHomePage(MouseEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("/PlaylistPage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/HomePage.fxml"));
 			scene = new Scene(root);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
