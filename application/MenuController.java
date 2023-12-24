@@ -107,12 +107,16 @@ public class MenuController {
 			e.printStackTrace();
 		}
     	PlaylistController pc = loader.getController();
-    	pc.setLabelPlaylistName(idplaylist);
+    	pc.setPlaylistInfosToView(idplaylist);
     	pc.getPodcastsOfPlaylistFromDB();
         scene = new Scene(root);
+        
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
         stage.setScene(scene);
+      
         stage.show();
+     
     }
 }
     

@@ -7,9 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -23,8 +25,12 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import module.Playlist;
 import module.Podcast;
@@ -38,6 +44,9 @@ public class PlaylistController{
 	@FXML
     private Label playlistbigName;
 	
+	@FXML
+	private Text smalldec;
+	
 	@FXML 
 	private Rectangle imageRec;
 	
@@ -49,10 +58,7 @@ public class PlaylistController{
 	
 	 @FXML
 	void initialize() {
-		 Image image = new Image("file:/F:/dowld/chris-lynch-Qruwi3Ur3Ak-unsplash.jpg");
-		 System.out.println("image");
-		 ImagePattern imageP = new ImagePattern(image);
-		 imageRec.setFill(imageP);
+		 
 	}
 	 
 	public void backToHomePage(MouseEvent event) {
@@ -74,9 +80,15 @@ public class PlaylistController{
 			playls.setId(id_playlist);
 		}
 		 
-	public void setLabelPlaylistName(int idp) {
+	public void setPlaylistInfosToView(int idp) {
 		setId_playlist(idp);
 		playlistbigName.setText(getPlaylistNameDB(playls.getId()));
+		smalldec.setText(getPlaylistSmalldescDB(playls.getId()));
+		String imgsrc = getPlaylistImgsrc(playls.getId());
+		if (imgsrc == null) imgsrc="file:/F:/dowld/imagenoAvaliable.jpg";
+		Image image = new Image(imgsrc.replace('\u00A0', ' '));
+		ImagePattern imageP = new ImagePattern(image);
+		imageRec.setFill(imageP);
 	}
 	
 	public String getPlaylistNameDB(int idp) {
@@ -95,38 +107,77 @@ public class PlaylistController{
 		return null;
 	}
 
-	
-	
-	public void hoverOnPodcast (MouseEvent event) {
-		/*gridTable.getChildren().forEach(child -> {
-		    child.setOnMouseEntered(eve -> {
-		        // Get the row index of the hovered child
-		        int rowIndex = GridPane.getRowIndex(child);
-
-		        // Change the background color of all elements in that row
-		        for (Node node : gridPane.getChildren()) {
-		            if (GridPane.getRowIndex(node) == rowIndex) {
-		                node.setStyle("-fx-background-color: " + hoverColor.toString().replace("0x", "#"));
-		            }
-		        }
-		    });
-		});
-		gridPane.getChildren().forEach(child -> {
-		    child.setOnMouseExited(event -> {
-		        // Restore the original background color for all elements in the row
-		        int rowIndex = GridPane.getRowIndex(child);
-		        for (Node node : gridPane.getChildren()) {
-		            if (GridPane.getRowIndex(node) == rowIndex) {
-		                node.setStyle("");  // Remove any applied background color
-		            }
-		        }
-		    });
-		});
-		*/
+	public String getPlaylistSmalldescDB(int idp) {
+		
+		try {
+			Connection connection= MySqlConnector.getDBConnection();
+			String sql = "SELECT small_description From playlist WHERE playlist_id = ?";
+			PreparedStatement pl= connection.prepareStatement(sql);
+			pl.setInt(1, idp);
+			ResultSet results = pl.executeQuery();
+			results.next();
+			return results.getString("small_description");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
+	public String getPlaylistImgsrc(int idp) {
+		
+		try {
+			Connection connection= MySqlConnector.getDBConnection();
+			String sql = "SELECT image From playlist WHERE playlist_id = ?";
+			PreparedStatement pl= connection.prepareStatement(sql);
+			pl.setInt(1, idp);
+			ResultSet results = pl.executeQuery();
+			results.next();
+			return results.getString("image");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public void MouseEnteredOnPodcast (MouseEvent event,int rowIndex) {
+		        for (Node node : gridTable.getChildren()) {
+		        	
+		            if (GridPane.getRowIndex(node) == rowIndex) {
+		            	System.out.println(gridTable.getRowConstraints().get(rowIndex).getPrefHeight());
+		                node.setStyle("-fx-background-color: rgba(255, 255, 255, 0.06); -fx-cursor:hand;" );
+		                if(GridPane.getColumnIndex(node) == 0) {
+		                	Parent parent = (Parent) node ;
+		                	Node children = parent.getChildrenUnmodifiable().get(0);
+		                	Parent subparent = (Parent) children;
+		                	ObservableList<Node> subchildren = subparent.getChildrenUnmodifiable();
+		                	subchildren.get(0).setVisible(false);
+		                	subchildren.get(1).setVisible(true);
+		                }
+		                
+		                
+		            }
+		        }
+	}
+	
+	public void MouseExitedOnPodcast (MouseEvent event,int rowIndex) {
+        for (Node node : gridTable.getChildren()) {
+            if (GridPane.getRowIndex(node) == rowIndex) {
+                node.setStyle("-fx-background-color: rgba(255, 255, 255, 0.00);" );
+                if(GridPane.getColumnIndex(node) == 0) {
+                	Parent parent = (Parent) node ;
+                	Node children = parent.getChildrenUnmodifiable().get(0);
+                	Parent subparent = (Parent) children;
+                	ObservableList<Node> subchildren = subparent.getChildrenUnmodifiable();
+                	subchildren.get(0).setVisible(true);
+                	subchildren.get(1).setVisible(false);
+                }
+            }
+        }
+}
 	
 	public void getPodcastsOfPlaylistFromDB() {
 		try {
+			gridTable.getChildren().clear();
 			ArrayList<Podcast>podlist=new ArrayList<Podcast>();
 			int total_rows=0;
 			Connection connection = MySqlConnector.getDBConnection();
@@ -145,20 +196,98 @@ public class PlaylistController{
 				podlist.add(pod);
 				total_rows++;
 			}
+			System.out.println(gridTable.getRowConstraints().size());
+			if ( gridTable.getRowConstraints().size() < total_rows ) {
+				int rowsToAdd=total_rows-gridTable.getRowConstraints().size();
+				for (int i = 0; i < rowsToAdd; i++) {
+			        RowConstraints rowConstraint = new RowConstraints();
+			        gridTable.getRowConstraints().add(rowConstraint);
+			    }
+			}
 			int row=0;
 			for (Podcast podcast : podlist) {
+				int localrow=row; // localrow=row are the same just for the eventlisteners
 				System.out.println(podcast);
 				for (int col = 0; col < 5; col++) {
 					 HBox hb = new HBox();
-					 if (col==0 || col==3 || col==4) {
-						 hb.setAlignment(Pos.CENTER);
-					 }else {
-						 hb.setAlignment(Pos.CENTER_LEFT);
+					 hb.setAlignment((col==0 || col==3 || col==4) ? Pos.CENTER : Pos.CENTER_LEFT);
+					 switch (col) {
+					case 0: {
+						StackPane stackp = new StackPane();
+						Label label= new Label();
+						label.setText(Integer.toString(podcast.getId()));
+						label.getStyleClass().add("rowtext");
+						FontAwesomeIcon fontPlayicon = new FontAwesomeIcon();
+						fontPlayicon.setGlyphName("PLAY");
+						fontPlayicon.setFill(Paint.valueOf("white"));
+						fontPlayicon.setSize("2em");
+						fontPlayicon.setVisible(false);
+						stackp.getChildren().add(label);
+						stackp.getChildren().add(fontPlayicon);
+						hb.getChildren().add(stackp);
+						hb.setOnMouseEntered((event)-> MouseEnteredOnPodcast(event,localrow));
+						hb.setOnMouseExited((event)-> MouseExitedOnPodcast(event,localrow));
+						break;
+					}case 1: {
+						Rectangle rec = new Rectangle();
+						rec.setWidth(70);
+						rec.setHeight(70);
+						rec.setArcHeight(10);
+						rec.setArcWidth(10);
+						String imagePathWithNewSpaces = podcast.getImgsrc().replace('\u00A0', ' ');
+						
+						Image image = new Image(imagePathWithNewSpaces);
+			
+						ImagePattern imageP = new ImagePattern(image);
+						rec.setFill(imageP);
+						Label label= new Label();
+						label.setText(podcast.getTitle());
+						label.getStyleClass().add("rowtext");
+						hb.setSpacing(10);
+						hb.getChildren().add(rec);
+						hb.getChildren().add(label);
+						hb.setOnMouseEntered((event)-> MouseEnteredOnPodcast(event,localrow));
+						hb.setOnMouseExited((event)-> MouseExitedOnPodcast(event,localrow));
+						break;
+					}case 2:{
+						Label label= new Label();
+						label.setText(podcast.getHosts());
+						label.getStyleClass().add("rowtext");
+						hb.getChildren().add(label);
+						hb.setOnMouseEntered((event)-> MouseEnteredOnPodcast(event,localrow));
+						hb.setOnMouseExited((event)-> MouseExitedOnPodcast(event,localrow));
+						break;
+					}case 3:{
+						Label label= new Label();
+						DateFormat dateformat = DateFormat.getDateInstance(DateFormat.SHORT);
+						label.setText(dateformat.format(podcast.getDate()));
+						label.getStyleClass().add("rowtext");
+						hb.getChildren().add(label);
+						hb.setOnMouseEntered((event)-> MouseEnteredOnPodcast(event,localrow));
+						hb.setOnMouseExited((event)-> MouseExitedOnPodcast(event,localrow));
+						break;
+					}case 4:{
+						Label label= new Label();
+						label.setText(podcast.getDuration().toString());
+						label.getStyleClass().add("rowtext");
+						hb.getChildren().add(label);
+						hb.setOnMouseEntered((event)-> MouseEnteredOnPodcast(event,localrow));
+						hb.setOnMouseExited((event)-> MouseExitedOnPodcast(event,localrow));
+						break;
+					}
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + col);
 					 }
+					 
+					 gridTable.add(hb, col, row);
+					
+					 }
+					row++;
+					
 				}
 				
-				 row++;
-			}
+				
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -42,7 +42,7 @@
          </padding>
       </VBox>
       <Line endX="299.29290771484375" endY="7.748603820800781E-7" startX="-100.0" stroke="#3e3e3e" />
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="652.0" prefWidth="400.0" style="-fx-background-color: #272728;">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="652.0" prefWidth="400.0" style="-fx-background-color: #272728;" vbarPolicy="NEVER">
          <content>
             <VBox fx:id="vboxPlaylist" prefHeight="645.0" prefWidth="398.0" spacing="5.0" style="-fx-background-color: #272728;">
                <children>
