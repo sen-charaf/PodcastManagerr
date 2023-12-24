@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="PaneID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InspectPodcastController">
+   <children>
+      <Rectangle fx:id="RectangleID" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="205.0" layoutX="66.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Pane fx:id="InformationContainerID" layoutX="330.0" layoutY="54.0" prefHeight="306.0" prefWidth="353.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css">
+         <children>
+            <Label layoutX="14.0" layoutY="24.0" prefHeight="17.0" prefWidth="94.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Podcasts Title :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="54.0" prefHeight="18.0" prefWidth="52.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Hosts :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="84.0" prefHeight="17.0" prefWidth="83.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Description :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="218.0" prefHeight="19.0" prefWidth="120.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Episode Duration :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="247.0" prefHeight="19.0" prefWidth="120.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Release Schedule :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="273.0" prefHeight="19.0" prefWidth="58.0" stylesheets="@../../../CreatePodcast/src/application/CreatePodcast.css" text="Genre :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="PodcastTitlaID" layoutX="114.0" layoutY="25.0" prefHeight="17.0" prefWidth="209.0" text="Label" textFill="WHITE" />
+            <Label fx:id="HostsID" layoutX="61.0" layoutY="55.0" prefHeight="17.0" prefWidth="209.0" text="Label" textFill="WHITE" />
+            <Label fx:id="EpisodeDurationID" layoutX="134.0" layoutY="219.0" prefHeight="17.0" prefWidth="202.0" text="Label" textFill="WHITE" />
+            <Label fx:id="ReleaseScheduleID" layoutX="131.0" layoutY="248.0" prefHeight="17.0" prefWidth="209.0" text="Label" textFill="WHITE" />
+            <Label fx:id="GenreID" layoutX="74.0" layoutY="274.0" prefHeight="17.0" prefWidth="262.0" text="Label" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Button fx:id="DeleteButtonID" layoutX="435.0" layoutY="379.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="143.0" text="    DELETE">
+         <stylesheets>
+            <URL value="@../../../CreatePodcast/src/application/CreatePodcast.css" />
+            <URL value="@InspectPodcast.css" />
+         </stylesheets>
+      </Button>
+      <Label fx:id="TitreID" layoutX="66.0" layoutY="269.0" prefHeight="24.0" prefWidth="215.0" text="Titre" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="460.0" layoutY="388.0">
+         <image>
+            <Image url="@../../../../Downloads/Frame%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ExitButtonID" fitHeight="32.0" fitWidth="33.0" layoutX="672.0" layoutY="14.0">
+         <image>
+            <Image url="@../../../../Downloads/Frame%20Container.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PlayButtonID" fitHeight="42.0" fitWidth="42.0" layoutX="151.0" layoutY="321.0">
+         <image>
+            <Image url="@../../../../Downloads/Play-btn%20Container.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="NextButtonID" fitHeight="32.0" fitWidth="33.0" layoutX="237.0" layoutY="326.0">
+         <image>
+            <Image url="@../../../../Downloads/Layer%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PreviousButtonID" fitHeight="32.0" fitWidth="33.0" layoutX="75.0" layoutY="326.0">
+         <image>
+            <Image url="@../../../../Downloads/Layer%202%20(1).png" />
+         </image>
+      </ImageView>
+      <Slider layoutX="56.0" layoutY="373.0" prefHeight="6.0" prefWidth="236.0" stylesheets="@application.css" />
+      <ImageView fx:id="PauseButtonID" fitHeight="42.0" fitWidth="42.0" layoutX="151.0" layoutY="321.0">
+         <image>
+            <Image url="@../../../../Downloads/Play-btn%20Container%20(1).png" />
+         </image>
+      </ImageView>
+   </children>
+   <stylesheets>
+      <URL value="@application.css" />
+      <URL value="@InspectPodcast.css" />
+   </stylesheets>
+</Pane>

@@ -1,0 +1,41 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#PaneID{
+	-fx-background-color : #28262C;
+	-fx-border-radius : 35px;
+}
+#InformationContainerID{
+	-fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius:  19px;
+}
+Button{
+	-fx-background-color: #FF6767;
+    -fx-background-radius: 54px; /* Adjust the radius as per your preference */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 16px;
+    -fx-font-style: normal; /* Set the font style to normal */
+    -fx-font-weight: 700; /* Set the font weight to 700 (bold) */
+    -fx-cursor: hand; /* Set the cursor to appear as a pointer */
+    -fx-font-family: 'Inter';
+}
+#RectangleID{
+	-fx-fill : #757575;
+	-fx-stroke : transparent;
+	-fx-arc-width : 14;
+	-fx-arc-height : 14;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 17.9, 0, 0, 0); 
+}
+#TitreID{
+	-fx-alignment: center;
+}
+.slider{
+	-fx-cursor: hand;
+}
+
+.slider .track{
+	-fx-background-color : #9747FF;
+	-fx-border-radius : 0;
+	-fx-pref-height : 0.4;
+}
+ImageView{
+	 -fx-cursor: hand;
+}
