@@ -8,12 +8,15 @@ import java.sql.ResultSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -30,6 +33,24 @@ public class MenuController {
     private Scene scene;
     private Parent root;
 
+    public void ClickedOnCreatePlaylist(ActionEvent event) {
+    	try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/HomePage.fxml"));
+	
+			Parent root2=loader.load();
+			HomepageController hc = loader.getController();
+			System.out.println(hc);
+			hc.handelOverlay(1);
+			scene = new Scene(root2);
+	        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(scene);
+	        stage.show();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     public void mouseEnterUpload(MouseEvent  event) {
     	uploadBtn.setStyle("-fx-background-color:  #8550F7B8;-fx-background-radius: 54;");
     }
@@ -101,21 +122,32 @@ public class MenuController {
     
     public void showPlaylist(MouseEvent  event,int idplaylist)  {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/PlaylistPage.fxml"));
+    	
     	try {
 			root=loader.load();
+			/*Parent subRoot = FXMLLoader.load(getClass().getResource("HelloFx.fxml"));
+			AnchorPane mainroot = (AnchorPane) root;
+			mainroot.getChildren().add(subRoot);
+			mainroot.setTopAnchor((Node) subRoot, 48.5);
+			mainroot.setBottomAnchor((Node) subRoot, 48.5);
+			mainroot.setLeftAnchor((Node) subRoot, 648.5);
+			mainroot.setRightAnchor((Node) subRoot, 648.5);*/
+			PlaylistController pc = loader.getController();
+	    	pc.setPlaylistInfosToView(idplaylist);
+	    	pc.getPodcastsOfPlaylistFromDB();
+	    	
+	        scene = new Scene(root);
+	     
+	        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        
+	        stage.setScene(scene);
+	      
+	        stage.show();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	PlaylistController pc = loader.getController();
-    	pc.setPlaylistInfosToView(idplaylist);
-    	pc.getPodcastsOfPlaylistFromDB();
-        scene = new Scene(root);
-        
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        stage.setScene(scene);
-      
-        stage.show();
+    	
      
     }
 }

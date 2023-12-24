@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
@@ -40,6 +41,10 @@ public class PlaylistController{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	@FXML
+	private AnchorPane anchorContainer;
+	@FXML
+	private Parent createPlaylistOverlay;
 	
 	@FXML
     private Label playlistbigName;
@@ -60,10 +65,20 @@ public class PlaylistController{
 	void initialize() {
 		 
 	}
-	 
+	 public void handelOverlay(int mode) {
+			if (mode == 1) {
+				anchorContainer.setDisable(true);
+				createPlaylistOverlay.setVisible(true);
+				
+				System.out.println("1 "+createPlaylistOverlay);
+			}else if (mode == 2) {
+				anchorContainer.setDisable(false);
+			}
+			
+		}
 	public void backToHomePage(MouseEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("/HomePage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/PlaylistPage.fxml"));
 			scene = new Scene(root);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
@@ -218,9 +233,9 @@ public class PlaylistController{
 						label.setText(Integer.toString(podcast.getId()));
 						label.getStyleClass().add("rowtext");
 						FontAwesomeIcon fontPlayicon = new FontAwesomeIcon();
-						fontPlayicon.setGlyphName("PLAY");
+						fontPlayicon.setGlyphName("CARET_RIGHT");
 						fontPlayicon.setFill(Paint.valueOf("white"));
-						fontPlayicon.setSize("2em");
+						fontPlayicon.setSize("3.25em");
 						fontPlayicon.setVisible(false);
 						stackp.getChildren().add(label);
 						stackp.getChildren().add(fontPlayicon);

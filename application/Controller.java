@@ -2,6 +2,10 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,8 +16,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -101,8 +107,27 @@ public class Controller {
         });
         
         CloseID.setOnMouseClicked(e->{
-        	System.out.print("Close Clicked");
-        	PaneID.setVisible(false);
+        	
+			try {
+				PaneID.getScene();
+				System.out.print("Close Clicked");
+	        	PaneID.setVisible(false);
+	        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/HomePage.fxml"));
+				System.out.println(loader);
+				Parent root2;
+				root2 = loader.load();
+				HomepageController hc = loader.getController();
+				System.out.println(hc);
+				hc.handelOverlay(2);
+				Scene scene = new Scene(root2);
+		        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		        stage.setScene(scene);
+		        stage.show();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
         	
         });
     }
