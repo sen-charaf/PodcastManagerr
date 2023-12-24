@@ -1,0 +1,72 @@
+#PaneID {
+    -fx-background-color: linear-gradient(to bottom right, #454545 0%, #1F1E21 100%);
+}
+TextField{
+    -fx-background-color: #4B4B4B;
+    -fx-background-radius: 5px;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.38);
+    -fx-text-fill : #fff;
+    -fx-font-style: normal;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+#ChoseFileButtonID{
+	-fx-background-color:  #8550F7;
+    -fx-background-radius: 12px; /* Adjust the radius as per your preference */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px;
+    -fx-font-style: normal; /* Set the font style to normal */
+    -fx-font-weight: 700; /* Set the font weight to 700 (bold) */
+    -fx-cursor: hand; /* Set the cursor to appear as a pointer */
+    -fx-font-family: 'Inter';
+    }
+#UploadButtonID{
+	-fx-background-color:  #72CF86;
+    -fx-background-radius: 12px; /* Adjust the radius as per your preference */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px;
+    -fx-font-style: normal; /* Set the font style to normal */
+    -fx-font-weight: 700; /* Set the font weight to 700 (bold) */
+    -fx-cursor: hand; /* Set the cursor to appear as a pointer */
+    -fx-font-family: 'Inter';
+    }
+    
+Rectangle{
+	-fx-fill : #757575;
+	-fx-stroke : transparent;
+	-fx-arc-width : 14;
+	-fx-arc-height : 14;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 17.9, 0, 0, 0); /* Box-shadow effect */
+	}
+	
+	
+ImageView:hover{
+	-fx-cursor: hand;
+}
+
+button:hover {
+	 -fx-cursor: hand;
+}
+
+ChoiceBox{
+	-fx-background-color: #4B4B4B;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
+    
+}
+ChoiceBox > .label { 
+	-fx-text-fill: white;
+	 -fx-font-size: 12px; /* Adjust the font size as needed */
+      -fx-font-family: 'Inter';
+      -fx-font-weight: 600;
+      -fx-padding: 0 0 0 15;
+}
+ChoiceBox .context-menu { 
+	-fx-background-color: white ;
+	 -fx-cursor: hand;
+}
+ChoiceBox .menu-item:focused > .label {
+	-fx-text-fill: #4B4B4B;
+}
