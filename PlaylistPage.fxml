@@ -16,7 +16,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlaylistController">
    <children>
       <AnchorPane fx:id="anchorContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@application/playlist.css">
@@ -64,7 +63,7 @@
             </HBox>
             <Line fx:id="line" endX="1041.0245361328125" layoutX="542.947265625" layoutY="397.5" startX="-112.447265625" stroke="#ffffff1a" style="-fx-width: 100;" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="0.0" />
             <FontAwesomeIcon fx:id="backbtn" fill="#ffffff7d" glyphName="CHEVRON_CIRCLE_LEFT" layoutX="1579.0" layoutY="32.0" onMouseClicked="#backToHomePage" size="4.5em" wrappingWidth="48.00000858306885" x="-50.0" y="30.0" AnchorPane.rightAnchor="23.999991416931152" />
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="428.0" layoutY="422.0" prefHeight="484.0" prefWidth="1200.0" style="-fx-background-color: none;" vbarPolicy="NEVER" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="417.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="428.0" layoutY="422.0" prefHeight="484.0" prefWidth="1200.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="417.0">
                <content>
                   <GridPane fx:id="gridTable" prefHeight="261.0" prefWidth="1198.0" vgap="10.0">
                     <columnConstraints>

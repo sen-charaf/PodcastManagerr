@@ -28,6 +28,8 @@ public class HomepageController {
 	@FXML
 	private Parent createplaylistBtn;
 	@FXML
+	private Parent createPodcastOverlay;
+	@FXML
 	private AnchorPane anchorContainer;
 	@FXML
 	private Button uploadBtn;
@@ -48,30 +50,35 @@ public class HomepageController {
 		getAllPodcastFromDb(null);
 		
 	}
-	public void handelOverlay(int mode) {
-		if (mode == 1) {
-			anchorContainer.setDisable(true);
-			createPlaylistOverlay.setVisible(true);
-			
-			System.out.println("1 "+createPlaylistOverlay);
-		}else if (mode == 2) {
-			anchorContainer.setDisable(false);
+	public void handelOverlay(int mode,int overlaytype) {
+		if (overlaytype==2) {
+			if (mode == 1) {
+				anchorContainer.setDisable(true);
+				createPlaylistOverlay.setVisible(true);
+				
+				System.out.println("1 "+createPlaylistOverlay);
+			}else if (mode == 2) {
+				anchorContainer.setDisable(false);
+		}
+		}else if(overlaytype==1) {
+			if (mode == 1) {
+				anchorContainer.setDisable(true);
+				createPodcastOverlay.setVisible(true);
+				
+				System.out.println("1 "+createPlaylistOverlay);
+			}else if (mode == 2) {
+				anchorContainer.setDisable(false);
+		}
 		}
 		
 	}
 	
 	public void searchOnpodcastBytitle(ActionEvent e) {
-		
-		
-		
 			String title = searchBar.getText();
 			System.out.println(title.replace(' ', '_'));
 			podcastContainer.getChildren().clear();
 			getAllPodcastFromDb(title);
 			System.out.println(title);
-		
-		
-		
 	}
 	
 	
@@ -98,13 +105,13 @@ public class HomepageController {
 				pane.setPrefHeight(254);
 				pane.setPrefWidth(230);
 				pane.getStylesheets().add("file:/F:/.javaprojects/Podcast_GS/src/application/podcast.css");
-				pane.setStyle("-fx-background-radius: 20; ");
+				pane.setStyle("-fx-background-radius: 10; ");
 				Rectangle rec= new Rectangle();
 				Image image = new Image(pImgsrc);
 				ImagePattern imageP = new ImagePattern(image);
 				rec.setFill(imageP);
-				rec.setArcHeight(20);
-				rec.setArcWidth(20);
+				rec.setArcHeight(10);
+				rec.setArcWidth(10);
 				rec.setWidth(180);
 				rec.setHeight(180);
 				rec.setLayoutX(25);

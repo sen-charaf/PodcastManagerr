@@ -14,7 +14,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="249.0" prefWidth="400.0" spacing="40.0">
          <children>
-            <Button fx:id="uploadBtn" maxHeight="77.0" maxWidth="256.0" minHeight="77.0" minWidth="256.0" mnemonicParsing="false" onMouseEntered="#mouseEnterUpload" onMouseExited="#mouseLeaveUpload" prefHeight="77.0" prefWidth="256.0" style="-fx-background-radius: 54; -fx-background-color: #8550F7;" text="Upload" textFill="WHITE">
+            <Button fx:id="uploadBtn" maxHeight="77.0" maxWidth="256.0" minHeight="77.0" minWidth="256.0" mnemonicParsing="false" onAction="#ClickedOnUpload" onMouseEntered="#mouseEnterUpload" onMouseExited="#mouseLeaveUpload" prefHeight="77.0" prefWidth="256.0" style="-fx-background-radius: 54; -fx-background-color: #8550F7;" text="Upload" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="UPLOAD" />
                </graphic>
@@ -42,19 +42,26 @@
          </padding>
       </VBox>
       <Line endX="299.29290771484375" endY="7.748603820800781E-7" startX="-100.0" stroke="#3e3e3e" />
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="652.0" prefWidth="400.0" style="-fx-background-color: #272728;" vbarPolicy="NEVER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="652.0" prefWidth="400.0" style="-fx-background-color: #272728;">
          <content>
-            <VBox fx:id="vboxPlaylist" prefHeight="645.0" prefWidth="398.0" spacing="5.0" style="-fx-background-color: #272728;">
+            <VBox fx:id="vboxPlaylist" prefHeight="645.0" prefWidth="398.0" style="-fx-background-color: #272728;">
                <children>
-                  <Label layoutX="10.0" layoutY="27.0" prefHeight="36.0" prefWidth="399.0" styleClass="playlistName" text="playList number 1" textFill="#ffffff99">
+                  <Label layoutX="10.0" layoutY="27.0" prefHeight="36.0" prefWidth="398.0" text="playList number 1" textFill="#ffffff99">
                      <padding>
                         <Insets left="16.0" right="16.0" />
                      </padding>
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
                   </Label>
+                  <Line endX="100.0" layoutX="50.0" startX="-99.0" />
                   <Label prefHeight="36.0" prefWidth="396.0" styleClass="playlistName" text="playList number 2" textFill="#ffffff99">
                      <padding>
                         <Insets left="16.0" right="16.0" />
                      </padding>
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font>
                   </Label>
                   <Label layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="396.0" styleClass="playlistName" text="playList number 3" textFill="#ffffff99">
                      <padding>

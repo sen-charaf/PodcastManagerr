@@ -29,5 +29,6 @@
          </children>
       </AnchorPane>
    <fx:include fx:id="createPlaylistOverlay" source="HelloFx.fxml" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="250.0" />
+      <fx:include fx:id="createPodcastOverlay" source="application/CreatePodcast.fxml" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="200.0" />
    </children>
 </AnchorPane>

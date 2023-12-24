@@ -18,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 public class MenuController {
@@ -41,7 +43,7 @@ public class MenuController {
 			Parent root2=loader.load();
 			HomepageController hc = loader.getController();
 			System.out.println(hc);
-			hc.handelOverlay(1);
+			hc.handelOverlay(1,2);
 			scene = new Scene(root2);
 	        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        stage.setScene(scene);
@@ -50,6 +52,24 @@ public class MenuController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
+    	public void ClickedOnUpload(ActionEvent event) {
+        	try {
+
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/HomePage.fxml"));
+    	
+    			Parent root2=loader.load();
+    			HomepageController hc = loader.getController();
+    			System.out.println(hc);
+    			hc.handelOverlay(1,1);
+    			scene = new Scene(root2);
+    	        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	        stage.setScene(scene);
+    	        stage.show();
+    		} catch (Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
     }
     public void mouseEnterUpload(MouseEvent  event) {
     	uploadBtn.setStyle("-fx-background-color:  #8550F7B8;-fx-background-radius: 54;");
@@ -97,7 +117,11 @@ public class MenuController {
 		        label.setPrefHeight(36.0);
 		        label.setPrefWidth(400);
 		        label.setOnMouseClicked((event)-> showPlaylist(event,play_id));
+		        Line line = new Line(-100,0,300,0);
+		        line.setStroke(Paint.valueOf("#3e3e3e"));
+		      
 		        vboxPlaylist.getChildren().add(label);
+		        vboxPlaylist.getChildren().add(line);
 				System.out.println(results.getString("name")+""+results.getInt("playlist_id"));
 				
 			}

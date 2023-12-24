@@ -118,7 +118,7 @@ public class Controller {
 				root2 = loader.load();
 				HomepageController hc = loader.getController();
 				System.out.println(hc);
-				hc.handelOverlay(2);
+				hc.handelOverlay(2,2);
 				Scene scene = new Scene(root2);
 		        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		        stage.setScene(scene);

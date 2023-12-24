@@ -1,5 +1,6 @@
 #PaneID {
     -fx-background-color: linear-gradient(to bottom right, #454545 0%, #1F1E21 100%);
+    -fx-background-radius: 15px;
 }
 TextField{
     -fx-background-color: #4B4B4B;
