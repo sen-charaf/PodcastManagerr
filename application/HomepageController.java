@@ -3,17 +3,23 @@ package application;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -22,6 +28,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import module.Podcast;
 
 public class HomepageController {
 
@@ -42,9 +50,12 @@ public class HomepageController {
 	@FXML
 	private TextField searchBar;
 	
+	private ArrayList<Podcast> podcastlist;
+	
 	
 	@FXML 
 	void initialize() {
+		podcastlist=new ArrayList<Podcast>();
 		anchorContainer.setDisable(false);
 		podcastContainer.getChildren().clear();
 		getAllPodcastFromDb(null);
@@ -87,19 +98,40 @@ public class HomepageController {
 			Connection connection = MySqlConnector.getDBConnection();
 			ResultSet results ;
 			if(p_title==null) {
-				String sql="SELECT image,title From podcasts ORDER BY date_added DESC";
+				String sql="SELECT * From podcasts ORDER BY date_added DESC";
 				PreparedStatement ps = connection.prepareStatement(sql);
 				results = ps.executeQuery();
 			}else {
-				String sql="SELECT image,title From podcasts Where title Like ? ORDER BY date_added DESC ";
+				String sql="SELECT * From podcasts Where title Like ? ORDER BY date_added DESC ";
 				PreparedStatement ps = connection.prepareStatement(sql);
 				ps.setString(1, "%"+p_title+"%");
 				results = ps.executeQuery();
 			}
 			
 			while (results.next()) {
+				Podcast pod = new Podcast();
+				pod.setId(results.getInt("pod_id"));
+				pod.setTitle(results.getString("title"));
+				pod.setPlaylist_id(results.getInt("playlist_id"));
+				pod.setImgsrc(results.getString("image").replace('\u00A0', ' '));
+				pod.setHosts(results.getString("hosts"));
+				pod.setDescription(results.getString("description"));
+				System.out.println("4");
+				pod.setRelease_scheduele(results.getString("release_schedule"));
+				pod.setGenres(results.getString("genres"));
+				pod.setDate(results.getDate("date_added"));
+				pod.setDuration(results.getTime("duration"));
+				if (results.getString("song") != null) {
+					pod.setFilepath(results.getString("song").replace('\u00A0', ' '));
+				}else {
+					pod.setFilepath(results.getString("song"));
+				}
+				
+				
+				podcastlist.add(pod);
+				
 				String ptitle = results.getString("title");
-				System.out.println("44 "+ptitle.replace(' ', '_'));
+				
 				String pImgsrc= results.getString("image").replace('\u00A0', ' ');
 				Pane pane= new Pane();
 				pane.setPrefHeight(254);
@@ -128,12 +160,49 @@ public class HomepageController {
 				label.setId("podcastName");
 				pane.getChildren().add(rec);
 				pane.getChildren().add(label);
+				pane.setCursor(Cursor.HAND);
+				pane.setOnMouseClicked((event)->showInspectPodcast(event , podcastlist.indexOf(pod)));
 				podcastContainer.getChildren().add(pane);
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.err.println("error");
 		}
+	}
+
+	public void showInspectPodcast(MouseEvent event , int indxp) {
+		try {
+			ArrayList<Podcast> podcastnewList = shiftListFromIndex(indxp);
+			System.out.println(podcastnewList);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("InspecterPodcast.fxml"));
+			Parent root=loader.load();
+			InspectPodcastController inspectC = loader.getController();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(scene);
+			inspectC.getPodcasts(podcastnewList);
+			inspectC.setCloseMediaOnCloseWindow();
+			stage.show();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Podcast> shiftListFromIndex(int indx) {
+		
+		ArrayList<Podcast> podcastShiftedList = new ArrayList<Podcast>();
+		for (int i = indx; i < podcastlist.size(); i++) {
+			podcastShiftedList.add(podcastlist.get(i));
+		}
+		for (int i = 0; i < indx; i++) {
+			podcastShiftedList.add(podcastlist.get(i));
+		}
+		
+		
+		return podcastShiftedList;
+		
 	}
 
 }
