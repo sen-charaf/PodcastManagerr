@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane fx:id="PaneID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="734.0" stylesheets="@CreatePodcast.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCreatePodcast">
+<Pane fx:id="PaneID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="734.0" stylesheets="@CreatePodcast.css" visible="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCreatePodcast">
    <children>
       <TextField fx:id="PodcastTitleID" cache="true" layoutX="338.0" layoutY="51.0" prefHeight="37.0" prefWidth="339.0" promptText="Podcast Title" stylesheets="@CreatePodcast.css" />
       <TextField fx:id="HotsID" cache="true" layoutX="338.0" layoutY="109.0" prefHeight="37.0" prefWidth="339.0" promptText="Hots" stylesheets="@CreatePodcast.css" />
@@ -21,29 +21,29 @@
       <Button fx:id="ChoseFileButtonID" layoutX="102.0" layoutY="350.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="132.0" text="Choose file" />
       <ImageView fx:id="Image1ID" fitHeight="98.0" fitWidth="118.0" layoutX="112.0" layoutY="97.0">
          <image>
-            <Image url="@../../../../Downloads/Layer_1.png" />
+            <Image url="@../../../../dowld/iconsProjects/PodcastPlayholder.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="15.0" fitWidth="20.0" layoutX="126.0" layoutY="426.0">
          <image>
-            <Image url="@../../../../Downloads/upload-icon.png" />
+            <Image url="@../../../../dowld/iconsProjects/upload-icon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Image2ID" fitHeight="90.0" fitWidth="91.0" layoutX="126.0" layoutY="101.0">
          <image>
-            <Image url="@../../../../Downloads/Vector.png" />
+            <Image url="@../../../../dowld/iconsProjects/HoveredPlaceHolder.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ArrowLeftID" fitHeight="37.0" fitWidth="27.0" layoutX="43.0" layoutY="14.0">
          <image>
-            <Image url="@../../../../Downloads/icons8-flèche-gauche-50.png" />
+            <Image url="@../../../../dowld/icons8-flèche-gaucheBlanc-50.png" />
          </image>
       </ImageView>
       <ChoiceBox fx:id="ChoiceBoxID" layoutX="94.0" layoutY="288.0" prefHeight="29.0" prefWidth="156.0" />
       <TextField fx:id="WritePlaylistFieldID" layoutX="94.0" layoutY="289.0" prefHeight="27.0" prefWidth="156.0" promptText="Write Playlist" />
       <ImageView fx:id="ArrowLeftID2" fitHeight="37.0" fitWidth="27.0" layoutX="58.0" layoutY="266.0">
          <image>
-            <Image url="@../../../../Downloads/icons8-flèche-gauche-50.png" />
+            <Image url="@../../../../dowld/icons8-flèche-gaucheBlanc-50.png" />
          </image>
       </ImageView>
       <Label fx:id="LabelPodcastErreurID" layoutX="338.0" layoutY="89.0" prefHeight="17.0" prefWidth="251.0" textFill="RED" />
@@ -55,7 +55,7 @@
       <Label fx:id="ChooseSongErreurID" layoutX="106.0" layoutY="388.0" prefHeight="17.0" prefWidth="251.0" textFill="RED" />
       <ImageView fx:id="ExitButtonID" fitHeight="29.0" fitWidth="27.0" layoutX="699.0" layoutY="6.0">
          <image>
-            <Image url="@../../../../Downloads/Frame%20Container.png" />
+            <Image url="@../../../../dowld/iconsProjects/deleteIcon.png" />
          </image>
       </ImageView>
    </children>

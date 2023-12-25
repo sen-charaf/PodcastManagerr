@@ -7,22 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="backGround" stylesheets="@application/homePage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomepageController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomepageController">
    <children>
-   <fx:include fx:id="menuVcontainer" source="Menu.fxml" />
-      <Label layoutX="440.0" layoutY="6.0" prefHeight="141.0" prefWidth="1200.0" styleClass="RecentlyAdded" text="Recently added" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <TextField layoutX="465.0" layoutY="145.0" prefHeight="60.0" prefWidth="593.0" style="-fx-background-radius: 41;" />
-      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="406.0" layoutY="277.0" prefHeight="622.0" prefWidth="1178.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="406.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="277.0">
-         <content>
-            <TilePane fx:id="podcastContainer" hgap="20.0" prefHeight="800.0" prefWidth="1280.0" vgap="15.0">
-               <children>
-                  <fx:include fx:id="childContent" source="Podcast.fxml" />
-               </children>
-               <padding>
-                  <Insets left="45.0" />
-               </padding>
-            </TilePane>
-         </content>
-      </ScrollPane>
+      <AnchorPane fx:id="anchorContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="backGround" stylesheets="@application/homePage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+         <fx:include fx:id="menuVcontainer" source="Menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="440.0" layoutY="6.0" prefHeight="141.0" prefWidth="1200.0" styleClass="RecentlyAdded" text="Recently added" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TextField fx:id="searchBar" layoutX="465.0" layoutY="145.0" onAction="#searchOnpodcastBytitle" prefHeight="42.0" prefWidth="465.0" promptText="Search...." style="-fx-background-radius: 41;" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="406.0" layoutY="277.0" prefHeight="622.0" prefWidth="1178.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="406.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="277.0">
+               <content>
+                  <TilePane fx:id="podcastContainer" hgap="20.0" prefHeight="800.0" prefWidth="1280.0" vgap="15.0">
+                     <children>
+                        <fx:include fx:id="childContent" source="Podcast.fxml" />
+                     </children>
+                     <padding>
+                        <Insets left="45.0" />
+                     </padding>
+                  </TilePane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   <fx:include fx:id="createPlaylistOverlay" source="HelloFx.fxml" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="250.0" />
+      <fx:include fx:id="createPodcastOverlay" source="application/CreatePodcast.fxml" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="200.0" />
    </children>
 </AnchorPane>

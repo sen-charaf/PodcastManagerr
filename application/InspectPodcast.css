@@ -39,3 +39,9 @@ Button{
 ImageView{
 	 -fx-cursor: hand;
 }
+.my-progress-bar .bar{
+	-fx-background-color: #8550F7; /* Progress color */
+}
+.my-progress-bar .track{
+	-fx-background-color: #28262C; /* Progress color */
+}
