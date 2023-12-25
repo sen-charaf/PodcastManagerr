@@ -1,29 +1,40 @@
 package application;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import module.Podcast;
 
 public class InspectPodcastController  {
 
     @FXML
     private Button DeleteButtonID;
+    @FXML
+    private Label DescId;
 
     @FXML
     private Label EpisodeDurationID;
@@ -89,26 +100,30 @@ public class InspectPodcastController  {
     private double end;
     private boolean changing;
     private int changeStep;
-    @FXML
-    void initialize() {
-    	System.out.println("here");
+    private ArrayList<Podcast> podcastsFromDb= new ArrayList<Podcast>();
+    
+    public void getPodcasts(ArrayList<Podcast> podcastsInspect) {
+    	
+    	podcastsFromDb.addAll(podcastsInspect);
+    	System.out.println("hello"+podcastsFromDb);
     	podcasts = new ArrayList<File>();
-    	diractory = new File("F:\\.javaprojects\\Podcast_GS\\src\\podcastsFiles"); // hadi atbdl
-    	files = diractory.listFiles();
-    	System.out.println(diractory.canRead());
-    	if (files!=null) {
-    		for (File file : files) {
-				podcasts.add(file);
-				System.out.println(file);
-			}
-    	}
+    	for (Podcast podcast : podcastsFromDb) {
+    		if (podcast.getFilepath()!=null) {
+    			File file = new File(podcast.getFilepath());
+    			if (file.exists()) {
+                    podcasts.add(file);
+                } else {
+                    System.out.println("File not found: " + podcast.getFilepath());
+                }
+    		}
+			
+		}
+    	System.out.println(podcasts);
     	media = new Media(podcasts.get(podcastNumber).toURI().toString());
     	mediaPlayer = new MediaPlayer(media);
-    	PodcastTitlaID.setText(podcasts.get(podcastNumber).getName()); // hadi atbdl
-    	TitreID.setText(podcasts.get(podcastNumber).getName());
+    	setDetailsinfo();
     	slidedBar.valueChangingProperty().addListener((observable, oldValue, newValue)->{
-    		System.out.println(observable+","+oldValue+","+newValue);
-    		System.out.println("Start Dragging");
+    		
         	changing=true;
         	mediaPlayer.seek(Duration.seconds(slidedBar.getValue() / 100 * end));
         	if(changeStep == 1) {
@@ -122,6 +137,60 @@ public class InspectPodcastController  {
         
     	});
     }
+    
+    public void setDetailsinfo() {
+    	PodcastTitlaID.setText(podcastsFromDb.get(podcastNumber).getTitle());
+    	TitreID.setText(podcastsFromDb.get(podcastNumber).getTitle());
+    	Image image = new Image(podcastsFromDb.get(podcastNumber).getImgsrc());
+    	//System.out.println(podcastsFromDb.get(podcastNumber).getImgsrc());
+		ImagePattern imageP = new ImagePattern(image);
+		RectangleID.setFill(imageP);
+		HostsID.setText(podcastsFromDb.get(podcastNumber).getHosts());
+		DescId.setText(podcastsFromDb.get(podcastNumber).getDescription());
+		EpisodeDurationID.setText( podcastsFromDb.get(podcastNumber).getDuration().toString());
+		if(podcastsFromDb.get(podcastNumber).getRelease_scheduele() != null) {
+			ReleaseScheduleID.setText(podcastsFromDb.get(podcastNumber).getRelease_scheduele());
+		}else {
+			ReleaseScheduleID.setText("");
+		}
+		GenreID.setText(podcastsFromDb.get(podcastNumber).getGenres());
+    }
+    @FXML
+    void initialize() {
+    	DeleteButtonID.setOnAction(event -> {
+    		if (running) {
+    			mediaPlayer.stop();
+    		}
+    		deletePodcast(podcastsFromDb.get(podcastNumber).getId());
+            Stage stage = (Stage) DeleteButtonID.getScene().getWindow();
+            stage.close();
+        });
+    	
+    }
+    public void setCloseMediaOnCloseWindow() {
+    	Stage stage = (Stage) PaneID.getScene().getWindow();
+    	stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				
+				mediaPlayer.stop();
+			}	
+		});
+    }
+    public void deletePodcast(int id) {
+    	try {
+    		Connection connection = MySqlConnector.getDBConnection();
+        	String sql = "DELETE FROM podcasts Where pod_id = ?";
+			PreparedStatement ps=connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
     public void switchingToPlayPauseBtns(String btn) {
     	if (btn.equals("play")) {
         	PlayButtonID.setVisible(true);
@@ -164,8 +233,7 @@ public class InspectPodcastController  {
     	}
 		media = new Media(podcasts.get(podcastNumber).toURI().toString());
     	mediaPlayer = new MediaPlayer(media);
-    	PodcastTitlaID.setText(podcasts.get(podcastNumber).getName()); // hadi atbdl
-    	TitreID.setText(podcasts.get(podcastNumber).getName());
+    	setDetailsinfo();
     }
     
     @FXML
@@ -186,14 +254,20 @@ public class InspectPodcastController  {
     	}
 		media = new Media(podcasts.get(podcastNumber).toURI().toString());
     	mediaPlayer = new MediaPlayer(media);
-    	PodcastTitlaID.setText(podcasts.get(podcastNumber).getName()); // hadi atbdl
-    	TitreID.setText(podcasts.get(podcastNumber).getName());
+    	setDetailsinfo();
     }
+    
     @FXML
-    void changePodcastTimeline(Event event) {
-    	
+    void swirchtoProgressBar(MouseEvent event) {
+    	progressBar.setVisible(true);
+    	slidedBar.setVisible(false);
     }
 
+    @FXML
+    void switchToSlideBar(MouseEvent event) {
+    	progressBar.setVisible(false);
+    	slidedBar.setVisible(true);
+    }
     
     public void launchTimer () {
     	timer = new Timer();
@@ -212,7 +286,7 @@ public class InspectPodcastController  {
     				cancelTimer();
     		}
     	};
-    	timer.scheduleAtFixedRate(task, 1000, 500);
+    	timer.scheduleAtFixedRate(task, 0, 500);
     }
     
     public void cancelTimer() {

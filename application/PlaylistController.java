@@ -61,6 +61,8 @@ public class PlaylistController{
 	@FXML
 	private GridPane gridTable;
 	
+	private ArrayList<Podcast>podlist=new ArrayList<Podcast>();
+	
 	 @FXML
 	void initialize() {
 		 
@@ -193,7 +195,7 @@ public class PlaylistController{
 	public void getPodcastsOfPlaylistFromDB() {
 		try {
 			gridTable.getChildren().clear();
-			ArrayList<Podcast>podlist=new ArrayList<Podcast>();
+			
 			int total_rows=0;
 			Connection connection = MySqlConnector.getDBConnection();
 			String sql="Select * From podcasts WHERE playlist_id=?";
@@ -207,8 +209,20 @@ public class PlaylistController{
 				String row_hosts=results.getString("hosts");
 				Date row_dateAdded=results.getDate("date_added");
 				Time row_duration=results.getTime("duration");
-				Podcast pod = new Podcast(row_id,row_title,row_imgsrc,row_hosts,row_dateAdded,row_duration);
+				String row_desc=results.getString("description");
+				String row_rleaseSc=results.getString("release_schedule");
+				String row_genres=results.getString("genres");
+				String row_filepath=results.getString("song");
+				if(row_filepath!=null) {
+					row_filepath.replace('\u00A0', ' ');
+				}
+				int row_playlistid = results.getInt("playlist_id");
+				Podcast pod = new Podcast(row_id,row_playlistid,row_title,row_imgsrc,row_hosts,row_desc,
+						row_rleaseSc,row_genres,row_dateAdded,row_duration,row_filepath);
 				podlist.add(pod);
+				System.out.println("---------------");
+				System.out.println(podlist);
+				System.out.println("----------------");
 				total_rows++;
 			}
 			System.out.println(gridTable.getRowConstraints().size());
@@ -293,25 +307,58 @@ public class PlaylistController{
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + col);
 					 }
-					 
+					 hb.setOnMouseClicked((event)->showInspectPodcast(event , podlist.indexOf(podcast)));
 					 gridTable.add(hb, col, row);
-					
+					System.out.println("***"+podlist.indexOf(podcast));
 					 }
 					row++;
 					
 				}
-				
-				
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	
-	
+	public void showInspectPodcast(MouseEvent event , int indxp) {
+		try {
+			ArrayList<Podcast> podcastnewList = shiftListFromIndex(indxp);
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("InspecterPodcast.fxml"));
+			Parent root=loader.load();
+			InspectPodcastController inspectC = loader.getController();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(scene);
+			inspectC.getPodcasts(podcastnewList);
+			inspectC.setCloseMediaOnCloseWindow();
+			
+    
+			//stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			
+			
+			stage.show();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<Podcast> shiftListFromIndex(int indx) {
+		
+		ArrayList<Podcast> podcastShiftedList = new ArrayList<Podcast>();
+		System.out.println(podlist + " index :" + indx);
+		System.out.println(podlist.size());
+		for (int i = indx; i < podlist.size(); i++) {
+			podcastShiftedList.add(podlist.get(i));
+		}
+		for (int i = 0; i < indx; i++) {
+			podcastShiftedList.add(podlist.get(i));
+		}
+		System.out.println(podcastShiftedList);
+		return podcastShiftedList;
+		
+	}
 	
 	
 	

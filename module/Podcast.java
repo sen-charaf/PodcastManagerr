@@ -14,7 +14,7 @@ public class Podcast {
 	private String genres;
 	private Date date;
 	private Time duration;
-	
+	private String filepath;
 	public Podcast() {
 		super();
 	}
@@ -30,7 +30,7 @@ public class Podcast {
 	}
 
 	public Podcast(int id, int playlist_id, String title, String imgsrc, String hosts, String description,
-			String release_scheduele, String genres, Date date, Time duration) {
+			String release_scheduele, String genres, Date date, Time duration,String filepath) {
 		this.id = id;
 		this.playlist_id = playlist_id;
 		this.title = title;
@@ -41,6 +41,7 @@ public class Podcast {
 		this.genres = genres;
 		this.date = date;
 		this.duration = duration;
+		this.filepath=filepath;
 	}
 	@Override
 	public String toString() {
@@ -108,6 +109,14 @@ public class Podcast {
 	}
 	public void setDuration(Time duration) {
 		this.duration = duration;
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 	
 	

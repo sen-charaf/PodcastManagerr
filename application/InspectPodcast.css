@@ -18,7 +18,7 @@ Button{
     -fx-font-family: 'Inter';
 }
 #RectangleID{
-	-fx-fill : #757575;
+	
 	-fx-stroke : transparent;
 	-fx-arc-width : 14;
 	-fx-arc-height : 14;
